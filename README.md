@@ -6,7 +6,8 @@
 Инструкция по развёртыванию: 
 
 Клонируйте репозиторий на свой компьютер через командную строку.
-https://github.com/Anastasia-Gorlina/mesto-react.git
+
+git clone https://github.com/Anastasia-Gorlina/mesto-react.git
 
 Перейдите в локальную папку с проектом
 Уствновите зависимости
