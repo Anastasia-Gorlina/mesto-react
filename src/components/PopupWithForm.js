@@ -2,7 +2,6 @@ import '../index.css';
 
 function PopupWithForm({ title, name, isOpen, onClose, children, buttonText}) {
     return (
-      <>
         <section className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`} aria-label={title}>
           <div className="popup__container">
             <button type ="button" aria-label="close" onClick={onClose} className="popup__close-button"></button>
@@ -13,7 +12,6 @@ function PopupWithForm({ title, name, isOpen, onClose, children, buttonText}) {
           </form>
         </div>
       </section>
-      </>
   )
 }
 
