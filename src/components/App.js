@@ -10,19 +10,27 @@ import ImagePopup from './ImagePopup';
 import { useState } from 'react';
 
 function App() {
-  const [selectedCard, setSelectedCard] = useState({name:'', src:''});
-  const [isPicturePopupOpen, setIsPicturePopupOpen] = useState(false); 
-  const onPicturePopup = () => {setIsPicturePopupOpen(true)};
-  const handleCardClick  = (card) => {setSelectedCard(card); onPicturePopup()};
-
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const onEditAvatar = () => {setIsEditAvatarPopupOpen(true)};
-
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const onEditProfile = () => {setIsEditProfilePopupOpen(true)};
-
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const onAddPlace = () => {setIsAddPlacePopupOpen(true)};
+  const [isPicturePopupOpen, setIsPicturePopupOpen] = useState(false); 
+  const [selectedCard, setSelectedCard] = useState({name:'', src:''});
+
+  const onEditAvatar = () => {
+    setIsEditAvatarPopupOpen(true)};
+
+  const onEditProfile = () => {
+    setIsEditProfilePopupOpen(true)};
+ 
+  const onAddPlace = () => {
+    setIsAddPlacePopupOpen(true)};
+
+  const onPicturePopup = () => {
+    setIsPicturePopupOpen(true)};
+
+  const handleCardClick  = (card) => 
+  {setSelectedCard(card); 
+    onPicturePopup()};
 
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false);
