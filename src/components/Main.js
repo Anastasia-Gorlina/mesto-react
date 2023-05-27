@@ -8,6 +8,7 @@ function Main({handleEditAvatarClick, handleEditProfileClick, handleAddPlaceClic
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, editUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
       api.getUserInfo().then(res => {
@@ -19,8 +20,6 @@ function Main({handleEditAvatarClick, handleEditProfileClick, handleAddPlaceClic
           console.log ('Ошибка: ${err}')
       })
   }, [])
-
-      const [cards, setCards] = useState([]);
 
     useEffect(() => {
         api.getInitialCards().then(res => {

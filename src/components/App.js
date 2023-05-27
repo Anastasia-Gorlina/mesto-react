@@ -10,6 +10,11 @@ import ImagePopup from './ImagePopup';
 import { useState } from 'react';
 
 function App() {
+  const [selectedCard, setSelectedCard] = useState({name:'', src:''});
+  const [isPicturePopupOpen, setIsPicturePopupOpen] = useState(false); 
+  const onPicturePopup = () => {setIsPicturePopupOpen(true)};
+  const handleCardClick  = (card) => {setSelectedCard(card); onPicturePopup()};
+
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const onEditAvatar = () => {setIsEditAvatarPopupOpen(true)};
 
@@ -19,7 +24,6 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const onAddPlace = () => {setIsAddPlacePopupOpen(true)};
 
-
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -27,11 +31,6 @@ function App() {
     setIsPicturePopupOpen(false);
     setSelectedCard ({name:'', src:''})
   };
-
-  const [selectedCard, setSelectedCard] = useState({name:'', src:''});
-  const [isPicturePopupOpen, setIsPicturePopupOpen] = useState(false); 
-  const onPicturePopup = () => {setIsPicturePopupOpen(true)};
-  const handleCardClick  = (card) => {setSelectedCard(card); onPicturePopup()};
 
   return (
     <div className="page">
