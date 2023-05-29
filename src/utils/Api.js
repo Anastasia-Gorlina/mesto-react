@@ -1,4 +1,4 @@
-export default class Api {
+export class Api {
     constructor({ baseUrl, headers }) {
         this._url = baseUrl;
         this._headers = headers;
@@ -39,7 +39,7 @@ export default class Api {
         }).then((res) => this._addResult(res))
     };
 
-    addLike(id) {
+    /*addLike(id) {
         return fetch(`${this._url}/cards/${id}/likes`, {
             method: 'PUT',
             headers: this._headers,
@@ -51,7 +51,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         }).then((res) => this._addResult(res))
-    };
+    };*/
 
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
@@ -59,6 +59,14 @@ export default class Api {
             headers: this._headers,
         }).then((res) => this._addResult(res))
     };
+
+    сhangeLikeCard(id, like) {
+        return fetch(`${this._url}/cards/likes/${id}`, {
+            method: like ? 'DELETE' : 'PUT',
+            headers: this._headers,
+        })
+        .then((res) => this._addResult(res))
+    }
 
     editUserInfo(name, about) {
         return fetch(`${this._url}/users/me`, {
@@ -79,7 +87,7 @@ export default class Api {
     }
     }
     
-    export const api = new Api({
+ const api = new Api({
         baseUrl:'https://mesto.nomoreparties.co/v1/cohort-64',
         headers: {
             authorization: 'e44d19ac-dce7-428a-9146-8b8a14ccbad7',
@@ -87,3 +95,5 @@ export default class Api {
         }
     
     }); 
+
+    export default api;

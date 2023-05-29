@@ -4,7 +4,7 @@ function ImagePopup({card, isOpen, onClose}) {
             <div className="popup__figure-container">
             <figure className="popup__figure">
                 <img className="popup__image" 
-                src={card?.link}
+                src={card ? card.link : ''}
                 alt= {card ? card.alt : ''} />
                 <figcaption className="popup-image-status">{card? card.name : ''}</figcaption>
                 </figure>
