@@ -22,13 +22,15 @@ export class Api {
         }).then((res) => this._addResult(res))
     };
 
-    addNewCard(name, link) {
+    addNewCard(data) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
 
             headers: this._headers,
 
-            body: JSON.stringify({name, link}),
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link}),
         }).then((res) => this._addResult(res))
     };
 
@@ -38,6 +40,47 @@ export class Api {
             headers: this._headers,
         }).then((res) => this._addResult(res))
     };
+
+    changeLikeCardStatus(id, condition) {
+        if (condition) {
+            return fetch(`${this._url}/cards/${id}/likes`, {
+                method: 'PUT',
+                headers: this._headers,
+            }).then((res) => this._addResult(res))
+        } else {
+            return fetch(`${this._url}/cards/${id}/likes`, {
+                method: 'DELETE',
+                headers: this._headers,
+            }).then((res) => this._addResult(res))
+        }
+    };
+
+    getUserInfo() {
+        return fetch(`${this._url}/users/me`, {
+            method: 'GET',
+            headers: this._headers,
+        }).then((res) => this._addResult(res))
+    };
+
+    editUserInfo(data) {
+        return fetch(`${this._url}/users/me`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                about: data.about}),
+        }).then((res) => this._addResult(res))
+    };
+
+    editUserAvatar({avatar}) {
+        return fetch(`${this._url}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: avatar,
+            }),
+        }).then((res) => this._addResult(res))
+    }
 
     /*addLike(id) {
         return fetch(`${this._url}/cards/${id}/likes`, {
@@ -53,41 +96,9 @@ export class Api {
         }).then((res) => this._addResult(res))
     };*/
 
-    getUserInfo() {
-        return fetch(`${this._url}/users/me`, {
-            method: 'GET',
-            headers: this._headers,
-        }).then((res) => this._addResult(res))
-    };
-
-    сhangeLikeCard(id, like) {
-        return fetch(`${this._url}/cards/likes/${id}`, {
-            method: like ? 'DELETE' : 'PUT',
-            headers: this._headers,
-        })
-        .then((res) => this._addResult(res))
-    }
-
-    editUserInfo(name, about) {
-        return fetch(`${this._url}/users/me`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({name, about}),
-        }).then((res) => this._addResult(res))
-    };
-
-    editUserAvatar(url) {
-        return fetch(`${this._url}/users/me/avatar`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                avatar: url,
-            }),
-        }).then((res) => this._addResult(res))
-    }
     }
     
- const api = new Api({
+    export const api = new Api({
         baseUrl:'https://mesto.nomoreparties.co/v1/cohort-64',
         headers: {
             authorization: 'e44d19ac-dce7-428a-9146-8b8a14ccbad7',
