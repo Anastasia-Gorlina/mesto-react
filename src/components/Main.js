@@ -49,7 +49,7 @@ function Main(
         return <Card 
           onCardClick = {onCardClick} onCardLike = {onCardLike}
           onCardDelete ={onCardDelete} card={card} key = {card._id}/>
-                    })}
+        })}
       </section>
     </main>
   );
