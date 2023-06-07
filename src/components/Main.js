@@ -40,15 +40,11 @@ function Main(
           className="profile__button"
         ></button>
       </section>
-      <section
-        className="elements"
-        aria-label="Photos added by the user"
-      ></section>
       <section className="elements">
       {cards.map (card => {
         return <Card 
           onCardClick = {onCardClick} onCardLike = {onCardLike}
-          onCardDelete ={onCardDelete} card={card} key = {card._id}/>
+          onCardDelete = {onCardDelete} card = {card} key = {card._id}/>
         })}
       </section>
     </main>

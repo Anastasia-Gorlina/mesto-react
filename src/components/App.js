@@ -19,20 +19,25 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({name:'', src:''});
 
   const handleEditAvatarClick = () => {
-    setIsEditAvatarPopupOpen(true)};
+    setIsEditAvatarPopupOpen(true)
+  };
 
   const handleEditProfileClick = () => {
-    setIsEditProfilePopupOpen(true)};
+    setIsEditProfilePopupOpen(true)
+  };
  
   const handleAddPlaceClick = () => {
-    setIsAddPlacePopupOpen(true)};
+    setIsAddPlacePopupOpen(true)
+  };
 
   const onPicturePopup = () => {
-    setIsPicturePopupOpen(true)};
+    setIsPicturePopupOpen(true)
+  };
 
   const handleCardClick  = (card) => 
   {setSelectedCard(card); 
-    onPicturePopup()};
+    onPicturePopup()
+  };
 
   const closeAllPopups = (form) => {
     setIsEditAvatarPopupOpen(false);
@@ -87,11 +92,11 @@ function App() {
         })
   } 
   
-  function handleUpdateUser (dataUser) {
+  function handleUpdateUser (data) {
     // Отправляем запрос в API и обновляем значения профиля
     //console.log(data)
     setisLoadingButton(true)
-    api.editUserInfo(dataUser).then((res) => {
+    api.editUserInfo(data).then((res) => {
         setCurrentUser(res);
         closeAllPopups()
         setisLoadingButton(false)
@@ -101,11 +106,11 @@ function App() {
       })
   }
   
-  function handleUpdateAvatar (dataAvatar) {
+  function handleUpdateAvatar (Avatar) {
     // Отправляем запрос в API и обновляем аватар
     //console.log(data)
     setisLoadingButton(true)
-    api.editUserAvatar(dataAvatar).then((res) => {
+    api.editUserAvatar(Avatar).then((res) => {
         setCurrentUser(res);
         closeAllPopups()
         setisLoadingButton(false)
@@ -151,7 +156,7 @@ function App() {
       />
 
       <ImagePopup 
-                card = {selectedCard} isOpen = {isPicturePopupOpen} onClose = {closeAllPopups} >
+        card = {selectedCard} isOpen = {isPicturePopupOpen} onClose = {closeAllPopups} >
       </ImagePopup>
       </CurrentUserContext.Provider>
     </div>
